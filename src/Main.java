@@ -3,45 +3,56 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
 public static void main(String[] args) {
 
-    System.out.println("Chceš zapisovat (1) nebo zobrazovat (2) ?");
+    for (int k = 0; k == 0; k--){
 
-    System.out.println("Kolik zařízení chceš zadat?");
-    int count = sc.nextInt();
+        System.out.println("Chceš zapisovat (1) nebo zobrazovat (2) ?");
+    int vyber = sc.nextInt();
     sc.nextLine();
+    switch (vyber) {
+        case 1:
 
-    IPrehravac[] prehravace = new IPrehravac[count];
 
-    for (int i = 0; i < count; i++) {
-        System.out.println("Stiskni 1 pro MP3 ; Stiskni 2 pro Smartphone ; Stiskni 3 pro radio");
-        int volba = sc.nextInt();
-        sc.nextLine();
+            System.out.println("Kolik zařízení chceš zadat?");
+            int count = sc.nextInt();
+            sc.nextLine();
 
-        switch (volba) {
-            case 1:
-                System.out.println("Jaká je značka MP3?");
-                String znacka = sc.nextLine();
-                prehravace[i] = new Mp3(znacka);
+            IPrehravac[] prehravace = new IPrehravac[count];
+
+            for (int i = 0; i < count; i++) {
+                System.out.println("Stiskni 1 pro MP3 ; Stiskni 2 pro Smartphone ; Stiskni 3 pro radio");
+                int volba = sc.nextInt();
+                sc.nextLine();
+
+                switch (volba) {
+                    case 1:
+                        System.out.println("Jaká je značka MP3?");
+                        String znacka = sc.nextLine();
+                        prehravace[i] = new Mp3(znacka);
+                        break;
+                    case 2:
+                        System.out.println("Jaký je model smartphonu");
+                        String model = sc.nextLine();
+                        prehravace[i] = new Smartphone(model);
+                        break;
+                    case 3:
+                        prehravace[i] = new Radio();
+                        break;
+                }
                 break;
-            case 2:
-                System.out.println("Jaký je model smartphonu");
-                String model = sc.nextLine();
-                prehravace[i] = new Smartphone(model);
-                break;
-            case 3:
-                prehravace[i] = new Radio();
-                break;
+            }
+        case 2:
 
+
+            IPrehravac[] zarizeni = new Mp3[3];
+            zarizeni[0] = new Mp3("Sony");
+            zarizeni[1] = new Smartphone("Appel");
+            zarizeni[2] = new Radio();
+
+
+            break;
+        //Mp3[] mp3 = new Mp3(znacka){
+        //   prehravace[i] = mp3
+            }
         }
     }
-
-
-    IPrehravac[] zarizeni = new Mp3[3];
-    zarizeni[0] = new Mp3("Sony");
-    zarizeni[1] = new Smartphone("Appel");
-    zarizeni[2] = new Radio();
-
-    //Mp3[] mp3 = new Mp3(znacka){
-     //   prehravace[i] = mp3
-
-}
 }
